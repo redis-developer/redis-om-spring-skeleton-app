@@ -25,4 +25,4 @@ docker compose up
 
 ### Interact with the API
 
-You can interact with the API either directly through the [Swagger interface](https://localhost:7090/swagger/index.html).
+You can interact with the API either directly through the [Swagger interface](http://localhost:8080/swagger-ui/).
