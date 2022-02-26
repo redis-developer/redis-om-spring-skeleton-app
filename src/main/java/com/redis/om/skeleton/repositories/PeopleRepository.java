@@ -18,4 +18,10 @@ public interface PeopleRepository extends RedisDocumentRepository<Person, String
   
   // Performs full text search on a person's personal Statement
   Iterable<Person> searchByPersonalStatement(String text);
+  
+  // Performing a tag search on city
+  Iterable<Person> findByAddress_City(String city);
+  
+  // Performing a full-search on street
+  Iterable<Person> findByAddress_CityAndAddress_State(String city, String state);
 }

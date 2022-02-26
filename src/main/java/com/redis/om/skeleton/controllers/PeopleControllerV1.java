@@ -1,11 +1,17 @@
 package com.redis.om.skeleton.controllers;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -42,8 +48,49 @@ public class PeopleControllerV1 {
   }
 
   @GetMapping("statement")
-  Iterable<Person> byPersonalStatement(@PathVariable("q") String q) {
+  Iterable<Person> byPersonalStatement(@RequestParam("q") String q) {
     return repo.searchByPersonalStatement(q);
   }
 
+  @PostMapping("new")
+  Person create(@RequestBody Person newPerson) {
+    return repo.save(newPerson);
+  }
+  
+  @GetMapping("{id}")
+  Optional<Person> byId(@PathVariable String id) {
+    return repo.findById(id);
+  }
+
+  @PutMapping("{id}")
+  Person update(@RequestBody Person newPerson, @PathVariable String id) {
+    return repo.findById(id).map(person -> {
+      person.setFirstName(newPerson.getFirstName());
+      person.setLastName(newPerson.getLastName());
+      person.setAge(newPerson.getAge());
+      person.setAddress(newPerson.getAddress());
+      person.setHomeLoc(newPerson.getHomeLoc());
+      person.setPersonalStatement(newPerson.getPersonalStatement());
+
+      return repo.save(person);
+    }).orElseGet(() -> {
+      return repo.save(newPerson);
+    });
+  }
+
+  @DeleteMapping("{id}")
+  void delete(@PathVariable String id) {
+    repo.deleteById(id);
+  }
+  
+  @GetMapping("city")
+  Iterable<Person> byCity(@RequestParam("city") String city) {
+    return repo.findByAddress_City(city);
+  }
+  
+  @GetMapping("city_state")
+  Iterable<Person> byCityAndState(@RequestParam("city") String city, //
+      @RequestParam("state") String state) {
+    return repo.findByAddress_CityAndAddress_State(city, state);
+  }
 }

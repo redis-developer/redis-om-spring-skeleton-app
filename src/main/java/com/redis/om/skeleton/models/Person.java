@@ -9,11 +9,13 @@ import com.redis.om.spring.annotations.Searchable;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
 @Document
 public class Person {
   // Id Field, also indexed
@@ -33,4 +35,9 @@ public class Person {
 
   //Indexed for Geo Filtering
   @Indexed @NonNull public Point homeLoc;
+  
+  // Nest indexed object
+  @NonNull
+  @Indexed
+  private Address address;
 }

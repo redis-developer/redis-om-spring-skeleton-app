@@ -32,7 +32,7 @@ public class PeopleService {
   public Iterable<Person> findByHomeLoc(Point point, Distance distance) {
     return entityStream //
         .of(Person.class) //
-        .filter(Person$.HOME_LOC.near(point, distance)) //
+        //.filter(Person$.ADDRESS.HOME_LOC.near(point, distance)) //
         .collect(Collectors.toList());
   }
 
