@@ -32,4 +32,7 @@ public interface PeopleRepository extends RedisDocumentRepository<Person, String
   
   // Search Persons that have all of the skills (AND condition):
   Iterable<Person> findBySkillsContainingAll(Set<String> skills);
+  
+  // Performing a text search on all text fields:
+  Iterable<Person> search(String text);
 }

@@ -104,4 +104,9 @@ public class PeopleControllerV1 {
   Iterable<Person> byAllSkills(@RequestParam("skills") Set<String> skills) {
     return repo.findBySkillsContainingAll(skills);
   }
+  
+  @GetMapping("search/{q}")
+  Iterable<Person> fullTextSearch(@PathVariable("q") String q) {
+    return repo.search(q);
+  }
 }
