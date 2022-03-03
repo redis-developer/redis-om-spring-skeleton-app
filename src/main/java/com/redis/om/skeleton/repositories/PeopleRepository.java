@@ -1,5 +1,7 @@
 package com.redis.om.skeleton.repositories;
 
+import java.util.Set;
+
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Point;
 
@@ -24,4 +26,10 @@ public interface PeopleRepository extends RedisDocumentRepository<Person, String
   
   // Performing a full-search on street
   Iterable<Person> findByAddress_CityAndAddress_State(String city, String state);
+  
+  // Search Persons that have one of multiple skills (OR condition)
+  Iterable<Person> findBySkills(Set<String> skills);
+  
+  // Search Persons that have all of the skills (AND condition):
+  Iterable<Person> findBySkillsContainingAll(Set<String> skills);
 }

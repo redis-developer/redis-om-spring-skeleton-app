@@ -1,5 +1,7 @@
 package com.redis.om.skeleton.models;
 
+import java.util.Set;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
 
@@ -21,23 +23,31 @@ public class Person {
   // Id Field, also indexed
   @Id
   @Indexed
-  public String id; 
+  private String id; 
 
   // Indexed for exact text matching
-  @Indexed @NonNull public String firstName;
-  @Indexed @NonNull public String lastName;
+  @Indexed @NonNull 
+  private String firstName;
+  
+  @Indexed @NonNull 
+  private String lastName;
 
   //Indexed for numeric matches
-  @Indexed @NonNull public Integer age;
+  @Indexed @NonNull 
+  private Integer age;
 
   //Indexed for Full Text matches
-  @Searchable @NonNull public String personalStatement;
+  @Searchable @NonNull 
+  private String personalStatement;
 
   //Indexed for Geo Filtering
-  @Indexed @NonNull public Point homeLoc;
+  @Indexed @NonNull 
+  private Point homeLoc;
   
   // Nest indexed object
-  @NonNull
-  @Indexed
+  @Indexed @NonNull
   private Address address;
+  
+  @Indexed @NonNull 
+  private Set<String> skills;
 }

@@ -1,6 +1,7 @@
 package com.redis.om.skeleton;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -58,12 +59,12 @@ public class SkeletonApplication {
       // 11461 Sunset Blvd, Los Angeles, CA 90049
       Address nickFuryAddress = Address.of("11461", "Sunset Blvd", "Los Angeles", "CA", "90049", "US");
 
-      Person thor = Person.of("Chris", "Hemsworth", 38, thorSays, new Point(-28.716667, 153.616667), thorsAddress);
-      Person ironman = Person.of("Robert", "Downey", 56, ironmanSays, new Point(40.9190747, -72.5371874), ironmansAddress);
-      Person blackWidow = Person.of("Scarlett", "Johansson", 37, blackWidowSays, new Point(40.7215259, -74.0129994), blackWidowAddress);
-      Person wandaMaximoff = Person.of("Elizabeth", "Olsen", 32, wandaMaximoffSays, new Point(40.6976701, -74.2598641), wandaMaximoffsAddress);
-      Person gamora = Person.of("Zoe", "Saldana", 43, gamoraSays, new Point(34.082615, -118.4345534), gamorasAddress);
-      Person nickFury = Person.of("Samuel L.", "Jackson", 73, nickFurySays, new Point(34.082615, -118.4345534), nickFuryAddress);
+      Person thor = Person.of("Chris", "Hemsworth", 38, thorSays, new Point(-28.716667, 153.616667), thorsAddress, Set.of("hammer", "biceps", "hair", "heart"));
+      Person ironman = Person.of("Robert", "Downey", 56, ironmanSays, new Point(40.9190747, -72.5371874), ironmansAddress, Set.of("tech", "money", "one-liners", "intelligence", "resources"));
+      Person blackWidow = Person.of("Scarlett", "Johansson", 37, blackWidowSays, new Point(40.7215259, -74.0129994), blackWidowAddress, Set.of("deception", "martial_arts"));
+      Person wandaMaximoff = Person.of("Elizabeth", "Olsen", 32, wandaMaximoffSays, new Point(40.6976701, -74.2598641), wandaMaximoffsAddress, Set.of("magic", "loyalty"));
+      Person gamora = Person.of("Zoe", "Saldana", 43, gamoraSays, new Point(34.082615, -118.4345534), gamorasAddress, Set.of("skills", "martial_arts"));
+      Person nickFury = Person.of("Samuel L.", "Jackson", 73, nickFurySays, new Point(34.082615, -118.4345534), nickFuryAddress, Set.of("planning", "deception", "resources"));
 
       repo.saveAll(List.of(thor, ironman, blackWidow, wandaMaximoff, gamora, nickFury));
     };

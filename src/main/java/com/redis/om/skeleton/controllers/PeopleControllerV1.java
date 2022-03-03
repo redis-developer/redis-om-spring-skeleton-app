@@ -1,6 +1,7 @@
 package com.redis.om.skeleton.controllers;
 
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.geo.Distance;
@@ -92,5 +93,15 @@ public class PeopleControllerV1 {
   Iterable<Person> byCityAndState(@RequestParam("city") String city, //
       @RequestParam("state") String state) {
     return repo.findByAddress_CityAndAddress_State(city, state);
+  }
+  
+  @GetMapping("skills")
+  Iterable<Person> byAnySkills(@RequestParam("skills") Set<String> skills) {
+    return repo.findBySkills(skills);
+  }
+  
+  @GetMapping("skills/all")
+  Iterable<Person> byAllSkills(@RequestParam("skills") Set<String> skills) {
+    return repo.findBySkillsContainingAll(skills);
   }
 }
