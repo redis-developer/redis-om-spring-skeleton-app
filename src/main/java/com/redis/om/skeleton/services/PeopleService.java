@@ -27,15 +27,6 @@ public class PeopleService {
         .collect(Collectors.toList());
   }
 
-  // Draws a circular geofilter around a spot and returns all people in that
-  // radius
-  public Iterable<Person> findByHomeLoc(Point point, Distance distance) {
-    return entityStream //
-        .of(Person.class) //
-        //.filter(Person$.ADDRESS.HOME_LOC.near(point, distance)) //
-        .collect(Collectors.toList());
-  }
-
   // Find people by their first and last name
   public Iterable<Person> findByFirstNameAndLastName(String firstName, String lastName) {
     return entityStream //
