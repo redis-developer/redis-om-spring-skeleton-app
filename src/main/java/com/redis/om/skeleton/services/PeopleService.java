@@ -36,6 +36,14 @@ public class PeopleService {
         .collect(Collectors.toList());
   }
 
+  public Iterable<Person> findByHomeLoc(//
+      Point point, Distance distance) {
+    return entityStream //
+        .of(Person.class) //
+        .filter(Person$.HOME_LOC.near(point, distance)) //
+        .collect(Collectors.toList());
+  }
+
   // Performs full text search on a person's personal Statement
   public Iterable<Person> searchByPersonalStatement(String text) {
     return entityStream //

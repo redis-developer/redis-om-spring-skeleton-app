@@ -16,15 +16,22 @@ import com.redis.om.skeleton.services.PeopleService;
 @RestController
 @RequestMapping("/api/v2/people")
 public class PeopleControllerV2 {
-  
+
   @Autowired
   PeopleService service;
-  
+
   @GetMapping("age_between")
   Iterable<Person> byAgeBetween(
       @RequestParam("min") int min, //
       @RequestParam("max") int max) {
     return service.findByAgeBetween(min, max);
+  }
+
+  @GetMapping("name")
+  Iterable<Person> byFirstNameAndLastName(
+      @RequestParam("first") String firstName, //
+      @RequestParam("last") String lastName) {
+    return service.findByFirstNameAndLastName(firstName, lastName);
   }
 
   @GetMapping("homeloc")
@@ -34,14 +41,7 @@ public class PeopleControllerV2 {
       @RequestParam("d") double distance) {
     return service.findByHomeLoc(new Point(lon, lat), new Distance(distance, Metrics.MILES));
   }
-  
-  @GetMapping("name")
-  Iterable<Person> byFirstNameAndLastName(
-      @RequestParam("first") String firstName, //
-      @RequestParam("last") String lastName) {
-    return service.findByFirstNameAndLastName(firstName, lastName);
-  }
-  
+
   @GetMapping("statement")
   Iterable<Person> byPersonalStatement(@PathVariable("q") String q) {
     return service.searchByPersonalStatement(q);
