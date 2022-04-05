@@ -2,6 +2,8 @@
 
 Redis OM Spring provides powerful repository and custom object-mapping abstractions built on top of the powerful Spring Data Redis (SDR) framework. This app is a simple started application using Redis OM Spring to map, manipulate and query some simple Spring Data models backed by RedisJSON documents.
 
+Check out our [workshop video](https://youtu.be/YhQX8pHy3hk) for this project on YouTube.
+
 ### Overview
 
 The app provides a simple model `Person`:
