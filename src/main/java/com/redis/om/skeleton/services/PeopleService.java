@@ -11,7 +11,7 @@ import com.redis.om.skeleton.models.Person;
 import com.redis.om.skeleton.models.Person$;
 import com.redis.om.spring.search.stream.EntityStream;
 
-import io.redisearch.aggregation.SortedField.SortOrder;
+import redis.clients.jedis.search.aggr.SortedField.SortOrder;
 
 @Service
 public class PeopleService {

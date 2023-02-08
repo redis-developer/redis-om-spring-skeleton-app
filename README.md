@@ -235,8 +235,8 @@ spring.redis.password=5uper53cret
 
 ## 📝 Prerequisites
 
-* Java 11 or higher
-* Spring Boot 2.6.4 (included by Redis OM Spring)
+* Java 17 or higher
+* Spring Boot 3.0.2 
 * A [Redis](https://redis.io) database with the [RediSearch](https://redisearch.io) module version TODO or higher installed.  We've provided a `docker-compose.yml` with Redis Stack for this. You can also [sign up for a free 30Mb database with Redis Enterprise Cloud](https://redis.com/try-free/) - be sure to check the box to configure a Redis Stack instance, follow [this guide](https://developer.redis.com/create/rediscloud/).
 * [curl](https://curl.se/), or [Postman](https://www.postman.com/) - to send HTTP requests to the application.  We'll provide examples using curl in this document.
 * Optional: [RedisInsight](https://redis.com/redis-enterprise/redis-insight/), a free data visualization and database management tool for Redis.  When downloading RedisInsight, be sure to select version 2.x.
@@ -249,4 +249,4 @@ spring.redis.password=5uper53cret
 
 ### 🧭Interact with the API
 
-You can interact with the API directly with CURL or through the [Swagger interface](http://localhost:8080/swagger-ui/).
+You can interact with the API directly with CURL or through the [Swagger interface](http://localhost:8080/swagger-ui/index.html).
