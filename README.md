@@ -220,17 +220,19 @@ This launches Redis Stack; Redis Stack Server on port 6379, and Redis Insight 80
 If you're using Redis Enterprise Cloud, you'll need the hostname, port number, and password for your database.  Use these to set the `application.properties` configuration like this:
 
 ```bash
-spring.redis.host=<host>
-spring.redis.port=<port>
-spring.redis.password=<password>
+spring.data.redis.host=<host>
+spring.data.redis.port=<port>
+spring.data.redis.password=<password>
+spring.data.redis.username=<username>
 ```
 
 For example if your Redis Enterprise Cloud database is at port `9139` on host `enterprise.redis.com` and your password is `5uper53cret` then you'd set `REDIS_OM_URL` as follows:
 
 ```bash
-spring.redis.host=enterprise.redis.com
-spring.redis.port=9139
-spring.redis.password=5uper53cret
+spring.data.redis.host=enterprise.redis.com
+spring.data.redis.port=9139
+spring.data.redis.password=5uper53cret
+spring.data.redis.username=default
 ```
 
 ## 📝 Prerequisites
