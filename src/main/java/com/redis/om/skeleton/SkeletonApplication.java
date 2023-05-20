@@ -3,6 +3,8 @@ package com.redis.om.skeleton;
 import java.util.List;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springdoc.core.models.GroupedOpenApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -22,6 +24,7 @@ import io.swagger.v3.oas.models.info.Info;
 @SpringBootApplication
 @EnableRedisDocumentRepositories(basePackages = "com.redis.om.skeleton.*")
 public class SkeletonApplication {
+  Logger logger = LoggerFactory.getLogger(SkeletonApplication.class);
 
   @Autowired
   PeopleRepository repo;
@@ -70,6 +73,8 @@ public class SkeletonApplication {
           nickFuryAddress, Set.of("planning", "deception", "resources"));
 
       repo.saveAll(List.of(thor, ironman, blackWidow, wandaMaximoff, gamora, nickFury));
+
+      repo.findAll().forEach(p -> logger.info("🦸 Name: {} {}", p.getFirstName(), p.getLastName()));
     };
   }
 
