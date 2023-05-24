@@ -42,7 +42,7 @@ public class PeopleControllerV2 {
     return service.findByHomeLoc(new Point(lon, lat), new Distance(distance, Metrics.MILES));
   }
 
-  @GetMapping("statement")
+  @GetMapping("statement/{q}")
   Iterable<Person> byPersonalStatement(@PathVariable("q") String q) {
     return service.searchByPersonalStatement(q);
   }
